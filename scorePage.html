@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="">
+        
+        <link rel="stylesheet" href="js/vendor/jquery.mobile.structure-1.3.0.min.css"/>	
+        <link href="js/vendor/jquery.mobile-1.3.0.min.css" rel="stylesheet" type="text/css" /> 
+
+        <link rel="stylesheet" href="css/menu.css">
+		
+		<script src="cordova.js" type="text/javascript"></script>
+        
+
+        <style>
+        #overall, #monthly, #weekly, #daily 
+        {
+            display: none;
+        }
+        </style>
+    </head>
+    <body>
+    
+        <div data-role="page" data-theme="a">
+            <div data-role="content" data-theme="a" style="align="center"">
+    
+                <div data-role="navbar" data-theme="a">
+                    <ul>
+                        <li><a href="#" dath-href="overall" id="overall">Overall</a>   <ul id="overallList"></ul> </li>
+                        <li><a href="#" dath-href="monthly">Monthly</a></li>
+                        <li><a href="#" dath-href="weekly">Weekly</a></li>
+                        <li><a href="#" dath-href="daily">Daily</a></li>
+                    </ul>
+                </div>
+      
+                <div class="content_div">
+                <br>
+                    <h1 align="center">Score</h1>
+                <br><br><br>
+                </div>
+                
+                <!--
+
+                <div id="overall" class="content_div">
+                    <br>
+                    <table  border=2 align="center">
+                      <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Score</th>
+                        <th>Rank</th>
+                      </tr>
+                      <tr>
+                        <td>Abdul Muthalif</td>
+                        <td>Bangalore</td>
+                        <td>100</td>
+                        <td>1</td>
+                      </tr>
+                    </table >
+                </div>
+
+                <div id="monthly" class="content_div">
+                    <br>
+                    <table  border=2 align="center">
+                      <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Score</th>
+                        <th>Rank</th>
+                      </tr>
+                       <tr>
+                        <td>Abdul Muthalif</td>
+                        <td>Bangalore</td>
+                        <td>100</td>
+                        <td>1</td>
+                      </tr>
+                    </table >
+                </div>
+                <div id="weekly" class="content_div">
+                     <br>
+                     <table border=2 align="center">
+                      <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Score</th>
+                        <th>Rank</th>
+                      </tr>
+                       <tr>
+                        <td>Abdul Muthalif</td>
+                        <td>Bangalore</td>
+                        <td>100</td>
+                        <td>1</td>
+                      </tr>
+                    </table>
+                </div>
+                <div id="daily" class="content_div">
+                    <br>
+                    <table border=2 align="center">
+                      <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Score</th>
+                        <th>Rank</th>
+                      </tr>
+                       <tr>
+                        <td>Abdul Muthalif</td>
+                        <td>Bangalore</td>
+                        <td>100</td>
+                        <td>1</td>
+                      </tr>
+                    </table>
+                </div>
+               -->
+        </div>
+            
+        <script src="js/vendor/jquery-1.8.2.min.js" type="text/javascript"></script>
+        <script src="js/vendor/jquery.mobile-1.3.0.min.js" type="text/javascript"></script>
+	
+        
+        <script type="text/javascript">
+            $('div[data-role="navbar"] a').live('click', function () 
+            {
+                $(this).addClass('ui-btn-active');
+                $('div.content_div').hide();
+                $('div#' + $(this).attr('dath-href')).show();
+            });
+                
+            
+            $(document).ready(function()
+            {
+                $("#overall").click(getOverallList);
+            });
+            
+            function onDeviceReady() 
+            {
+                 console.log("Entering index.html.onDeviceReady");
+                 getOverallList();
+                 console.log("Exiting index.html.onDeviceReady");
+            }
+            
+        function getOverallList()  
+        { 
+            alert("Enter the getOverallList");
+            console.log("Entering getOverallList()");
+            $.ajax(
+            {
+                url : "http://192.168.1.120:8080/rest/1.0/ranks/selectoverall",
+                dataType:"xml",
+                cache: false,
+                error:function (xhr, ajaxOptions, thrownError)
+                {
+                        debugger;
+                        alert(xhr.statusText);
+                        alert(thrownError);
+                },
+                success : function(xml) 
+                {
+                    console.log("Entering getOverallList.success()");
+              
+                    $(xml).find("score").each(function() 
+                    {
+                      var html = '<li>' + $(this).find("name").text() 
+                      + ' ' + $(this).find("location").text() 
+                      + ' ' + $(this).find("mobile_number").text() +'</li>';
+                      $('#overallList').append(html);
+                    });
+                    console.log("Exiting getContactList.success()");
+                } 
+            });
+        }
+        console.log("Exiting getContactList()");    
+            
+       </script>
+    
+    </body>
+</html>

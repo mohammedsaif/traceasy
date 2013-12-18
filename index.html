@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="">
+
+		<link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/validationEngine.jquery.css">
+
+		<script src="js/vendor/prefixfree.min.js"></script>
+		<script src="js/vendor/modernizr-custom.min.js"></script>
+
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+        <script src="cordova.js"></script> 
+
+	</head>
+	<body onload="onBodyLoad()">
+		<div role="main" class="page-container">
+			<div class="page page-1">
+				<div class="rightMenu">
+					<div class="wrap">
+						<h2>Donate</h2>
+						<p>Donate Link</p>
+						
+					</div>
+				</div>               
+                
+				<div class="centerpage" data-role="content" id="validacion">
+
+                    <form id="formID" name="formID">
+                      <input type="text" name="txtLocation" class="validate[required] text-input" id="txtLocation" placeholder="Location" ><br>
+                      <input type="text" name="name" class="validate[required] text-input" id="name" placeholder="Name" ><br>
+                      <input type="text" name="mobile" class="validate[required] text-input" id="mobile" placeholder="Mobile" >    
+                    </form>
+
+                    </br></br>
+
+                    <div align="center">
+
+                        <input class="nav button" id="submit" data-animation="1" href="#mainCanvas" data-clear="true" name="submit" type="submit" value="Start" onClick="AddValueToDB()">
+
+                    </div>
+
+                    </br></br>
+                     <!--   <a class="help button" href="#">Donate</a><br> -->
+                </div>
+            </div>
+			 
+
+			<div class="page page-2" data-role="page">
+                <div data-role="header" data-theme="b"> 
+                     <table>  
+                            <tr>
+                            <th><div id="hideMsg" style="font-size:25px;">
+                            START <span style="color:red;">60</span> Marks: 
+                            </div></th> 
+                            <th><div id="mark" style="font-size:25px;">0</div></th></tr>
+                     </table> 
+                  <img id="myImage" src="image/alif.png" style="position:relative;left:350px;bottom:35px;"/>
+                </div>
+              <!--
+                <div id="imei" style="font-size:25px;">
+                   <h4>                      
+                       IMEI: <span id="imei"></span><br/>
+                   </h4> 
+                </div>
+              -->
+             <div data-role="content" style="margin-top:300px;">      
+				<canvas id="mainCanvas"></canvas>
+				<h1 class="hint">ا</h1>
+							
+                <div class="list">
+                    <ul>
+                        <li><a href="#mainCanvas" id="starts" class="hinter active" data-clear="true" onclick="alif();playAudio('alif_baa_taa.mp3');">ا</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="baa();playAudio('alif_baa_taa.mp3');" >ب</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="tha();playAudio('alif_baa_taa.mp3');" >ت</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="thaa();playAudio('alif_baa_taa.mp3');" >ث</a></li>
+                       
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="jiim();playAudio('jiim.mp3');"">ج</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="haa();playAudio('haa.mp3');"">ح</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="kha();playAudio('khaa.mp3');"">خ</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="daal();playAudio('daal.mp3');"">د</a></li>
+                       
+                       
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="thaal();playAudio('alif_baa_taa.mp3');"">ذ</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="raa();playAudio('alif_baa_taa.mp3');"">ر</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="zaay();playAudio('alif_baa_taa.mp3');"">ز</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="siin();playAudio('siin.mp3');"">س</a></li>
+                       
+                       
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="shiin();playAudio('alif_baa_taa.mp3');"">ش</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="saad();playAudio('saad.mp3');"">ص</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="daad();playAudio('alif_baa_taa.mp3');"">ض</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="taa();playAudio('alif_baa_taa.mp3');"">ط</a></li>
+                       
+                       
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="tthaa();playAudio('alif_baa_taa.mp3');"">ظ</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="ayn();playAudio('ayn.mp3');"">ع</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="ghayn();playAudio('alif_baa_taa.mp3');"">غ </a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="faa();playAudio('alif_baa_taa.mp3');"">ف</a></li>
+                       
+                       
+                       
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="qaaf();playAudio('alif_baa_taa.mp3');"">ق</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="kaaf();playAudio('alif_baa_taa.mp3');"">ك</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="laam();playAudio('laam.mp3');"">ل</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="miim();playAudio('miim.mp3');"">م</a></li>
+                       
+                       
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="nuun();playAudio('alif_baa_taa.mp3');"">ن</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true" onclick="ha();playAudio('alif_baa_taa.mp3');"">ه</a></li>
+                        <li><a href="#mainCanvas" class="hinter" data-clear="true"  onclick="waaw();playAudio('alif_baa_taa.mp3');"">و</a></li>
+                        <li><a href="#mainCanvas" class="hinter" id="stop" data-clear="true"  onclick="yaa();playAudio('alif_baa_taa.mp3');"">ي</a></li>
+                    </ul>               
+                </div>
+           </div>    
+                   
+                <div class="menu">
+                       <a class="nav button" id="backbutton" data-animation="2" href="#mainCanvas" data-clear="true">Back</a> 
+                     </div> 
+           </div>
+
+
+              <div id="menu">
+                    <ul id="nav">
+                        <li><a href="#">Transition</a>
+                            <ul class="subs">
+                                <li><a href="scorePage.html" >Leaderboard</a></li>   
+                                <li><a href="donate.html" >Donate Us</a></li>  
+                            </ul>
+                        </li>                                
+                    </ul>
+               </div>
+
+		</div>
+		<script src="js/vendor/jquery.min.js"></script>
+		<script src="js/plugin.js"></script>
+
+        <!-- Alphabet Image JS File -->
+        <script src="js/imageAlpha.js"></script>
+
+        <!-- IMEI File -->
+        <script src="js/imei.js"></script>
+
+        <!-- SQLite Code -->
+        <script src="js/sqliteFile.js"></script>
+
+        <!-- Location Code -->
+        <script src="js/location.js"></script>
+
+        <!-- Audio Code -->
+        <script src="js/audio.js"></script>
+
+               
+ 
+
+        <!--	            
+            <script src="js/vendor/speakClient.js"></script>
+            <script async src="js/vendor/speakGenerator.js"></script>
+        -->
+
+        <script src="js/vendor/jquery.validationEngine-en.js"></script>
+        <script src="js/vendor/jquery.validationEngine.js"></script>
+        <script src="js/main.js"></script>
+
+
+        <script>
+
+            //REST Connection Code
+           
+            function formID()
+			{
+				console.log("Entering formID()");
+				$.post("http://192.168.1.120:8080/rest/1.0/ranks/putdetails",
+				$("#formID :input").serializeArray(),
+                    function(json)
+                    {
+                      if(json== null || json == 'undefined')
+                        alert("Insert failed");
+                      else
+                        alert("Insert successful");
+                    });
+				return false;
+			}
+           
+            
+           //Time Code    
+
+		   var x = "" 
+           var y = ""
+           var a = ""
+           var total = ""
+           var sec = 60
+           var timer = setInterval(function() 
+           {
+               $('#hideMsg span').text(sec--);
+               
+               if (sec == -1) {
+                  $('#hideMsg span').stop('fast');
+                  clearInterval(timer);
+               } 
+               else if(sec >= 1 && sec < 20)
+               {
+                   x="5";
+               }
+               else if (sec >= 20 && sec < 49)
+               {
+                   x="8";
+               }
+                else if (sec >= 50 && sec < 60)
+               {
+                   x="10";
+               }
+               
+               var total = document.getElementById("mark").innerHTML;
+               a=parseInt(total)+parseInt(x); 
+              
+           }, 1000); 
+            
+            
+            // Menu Code
+            
+			var width = $(window).width();
+            var height = $(window).height();
+
+            var menuOpen = false;
+            var menuDiv = "";
+
+            function init()
+            {
+                document.addEventListener("deviceready", startup, false);
+                
+            }
+            
+            
+
+            function startup()
+            {
+                console.log("Business time...");
+                menuDiv = document.querySelector("#menu");
+
+                document.addEventListener("menubutton", doMenu, false);
+            }
+
+            function doMenu()
+            {
+                console.log("The menu was clicked...");
+                if(menuOpen)
+                {
+                    console.log("close the menu");
+                    menuDiv.style.display="none";
+                    menuOpen = false;
+                }
+                else
+                {
+                    console.log("open the menu");
+                    menuDiv.style.display="block";
+                    menuOpen = true;
+                }
+
+            }
+                      
+                     
+            function onBodyLoad() 
+            {
+                console.log("I've been loaded");
+                document.addEventListener("deviceready", onDeviceReady, true);
+                
+                
+                //SQLite Create Table 
+                
+                // alert("DEBUGGING: we are in the onBodyLoad() function");
+                
+                if (!window.openDatabase) 
+                {  
+                   alert('Databases are not supported in this browser.');
+                   return;
+                }
+            
+                db = openDatabase(shortName, version, displayName,maxSize);
+                
+                db.transaction(function(tx)
+                {
+                    tx.executeSql('DROP TABLE IF EXISTS SCORES'); 
+                
+                     tx.executeSql('CREATE TABLE IF NOT EXISTS SCORES (UserId INTEGER NOT NULL PRIMARY KEY,Name TEXT NOT NULL, Location TEXT NOT NULL, Mobile TEXT, Imei TEXT, Marks TEXT)',[],nullHandler,errorHandler);
+                    
+                                         
+                },errorHandler,successCallBack);
+            } 
+            
+            // IMEI code
+            function onDeviceReady()             
+            {
+                console.log("We got device ready");
+                window.plugins.imei.get(function(imei) 
+                {
+                    var imeiVal = document.getElementById('imei');
+                    imeiVal.innerHTML = imei;
+                }, 
+                function() 
+                {
+                    console.log("fail");
+                });
+                
+            }
+           
+            //Document Event Code 
+            
+			 $(document).ready(function()
+             {
+                 $("#name").focus();
+                 
+			  	 $("#submit").click(formID);
+
+                 $("#stop").click(function()
+                 {
+                    $("#hideMsg span").stop();
+                     clearInterval(timer);
+                 });
+
+                 $("#formID").validationEngine(
+                 {
+                    failure : function() {}
+                 });
+       
+                 geocoder = new google.maps.Geocoder();
+                 navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
+             });
+
+        </script>
+       
+	</body>
+</html>
